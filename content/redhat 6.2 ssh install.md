@@ -1,6 +1,6 @@
 ---
 title: redhat 6.2 ssh install
-draft: "false"
+draft: "true"
 ---
 
 # Overview
