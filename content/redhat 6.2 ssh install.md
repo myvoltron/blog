@@ -122,6 +122,21 @@ export TERM=xterm
 여기까지만 따라해도 ssh로 접속해서 시스템 해킹의 거의 모든 실습을 진행할 수 있습니다.
 # 4. 그 외 예외 상황을 위한 대처
 ## 4.1 redhat 6.2 재실행
-redhat 6.2를 재실행하고 싶은 경우가 있을텐데, 기본적으로 redhat 6.2 접속 시 `linux-up`을 입력해야 redhat 6.2가 켜집니다. 그래서 외부 원격접속한 상태에서 재실행했을 때 `linux-up`을 입력할 수 있는 방법이 없기 때문에, 자동으로 `linux-up`을 통해 redhat 6.2가 켜지도록 설정해야합니다. 
+기본적으로 redhat 6.2 부팅시 `linux-up`을 입력해야 redhat 6.2가 켜집니다. 따라서 원격 접속 상태에서 redhat 6.2를 재실행하게 되면 `linux-up`을 입력하지 못하고 결국 redhat 6.2가 완전히 실행되지 않습니다. 
+
+재실행을 하더라도 자동으로 `linux-up`을 실행하도록 설정해야합니다. 
+![[Red Hat Linux test-2025-11-13-00-53-04.png|450]]
+`vi /etc/lilo.conf`를 실행하여 `/etc/lilo.conf` 파일을 편집해야합니다. 
+`default=linux`라고 써진 라인을 `default=linux-up`으로 수정해주고 저장합니다. 
+
+![[Red Hat Linux test-2025-11-13-01-18-55.png|450]]
+그리고 `/sbin/lilo` 명령어를 실행합니다. 
+
+![[Red Hat Linux test-2025-11-13-01-23-50.png|450]]
+이제 재실행을 하더라도 위 이미지와 같이 자동으로 `linux-up`이 실행되어 redhat 6.2가 정상적으로 실행될겁니다.
 ## 4.2 ssh2 start-up 프로그램으로 등록
-redhat 6.2를 재실행할 때마다 ssh2 server 또한 수동으로 켜줘야합니다. 이를 자동화할 수 있도록 start-up 프로그램으로 등록해두는 것이 편리합니다.
+redhat 6.2를 재실행할 때마다 ssh server 또한 수동으로 실행해야합니다. 이를 자동화할 수 있도록 start-up 프로그램으로 등록해두는 것이 효율적입니다. 
+간단하게 다음 명령어를 실행하여 start-up 프로그램으로 등록할 수 있었습니다. 
+```sh
+echo "/root/ssh-2.4.0/sshd2.startup start" >> /etc/rc.d/rc.local
+```

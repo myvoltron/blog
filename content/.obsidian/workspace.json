@@ -78,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "041cd31f51f0af4c",
@@ -229,6 +230,9 @@
   },
   "active": "f016194e0319dcb3",
   "lastOpenFiles": [
+    "images/Red Hat Linux test-2025-11-13-01-23-50.png",
+    "images/Red Hat Linux test-2025-11-13-01-18-55.png",
+    "images/Red Hat Linux test-2025-11-13-00-53-04.png",
     "images/Pasted image 20251113004429.png",
     "images/Pasted image 20251113004322.png",
     "images/Pasted image 20251113004229.png",
@@ -237,9 +241,6 @@
     "images/Pasted image 20251113003637.png",
     "images/Pasted image 20251113003323.png",
     "images/Pasted image 20251113003243.png",
-    "images/Red Hat Linux test-2025-11-12-23-59-08.png",
-    "images/Red Hat Linux test-2025-11-12-23-54-38.png",
-    "images/Red Hat Linux test-2025-11-12-23-54-18.png",
     "images",
     "public/index.html",
     "public/Untitled.html",
