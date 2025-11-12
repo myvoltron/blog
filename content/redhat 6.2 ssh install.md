@@ -92,9 +92,34 @@ redhat 6.2에서 `ifconfig`로 내부 ip를 알아낼 수 있습니다. 위 이�
 그 외 설정 화면입니다. 설명은 생략하겠습니다. 
 이렇게 새로운 방화벽 규칙을 생성했습니다. 이제 외부 환경에서 redhat 6.2로 접속할 준비가 끝났습니다. 
 # 3. Termius로 ssh 접속하기
-redhat 6.2와 redhat 6.2에 설치했던 ssh2 모두 옛날 버전이라서 현대 ssh 시스템과는 호환성이 떨어집니다. 그래서 일반적인 openssh client로 접속을 하려고 하면 다음과 같이 이상한 에러가 많이 뜹니다. 
-사실 client 단에서 옛날 프로토콜로 맞춰서 접속할 수 있게 할 수는 있지만, 번거롭기 때문에 MacOS 환경에서 자주 쓰이는 ssh 클라이언트인 **Termius**를 썼습니다.
+redhat 6.2와 redhat 6.2에 설치했던 ssh 모두 구버전이라서 현대 ssh client로는 잘 들어가지지 않는 경우가 있습니다. 
+그래서 제가 찾았던 ssh client는 **Termius**입니다. 
 
+https://termius.com/download/macos
+맥북 사용자의 경우 위 링크를 참조하여 termius를 설치합니다. 
+
+![[Pasted image 20251113003323.png|450]]
+termius의 메인 화면입니다. **NEW HOST** 버튼을 눌러줍니다. 
+
+![[Pasted image 20251113003637.png|450]]
+**Address**에는 공유기의 외부 ip 주소를 입력하면 됩니다. **포트 번호** 또한 공유기 포트포워딩 과정에서 설정하였던 서비스 포트의 번호를 입력합니다. 그 외 **Credentials** 또한 각자 계정에 맞게 입력해줍니다. 
+
+![[Pasted image 20251113003947.png|450]]
+정상적으로 잘 접속된 모습입니다. 
+
+![[Pasted image 20251113004034.png|450]]
+`clear` 명령어를 실행한 결과, **'xterm-256color': unknown terminal type**이라는 에러가 출력됩니다. 이 외에도 안되는 명령어가 많을겁니다.
+
+![[Pasted image 20251113004229.png|450]]
+다시 해당 호스트의 설정 화면으로 들어옵니다. Startup Command에 다음 코드를 입력합니다.
+```
+export TERM=xterm
+```
+
+![[Pasted image 20251113004429.png|450]]
+저장 이후에는 `clear` 명령어가 정상적으로 실행될 것입니다. 
+
+여기까지만 따라해도 ssh로 접속해서 시스템 해킹의 거의 모든 실습을 진행할 수 있습니다.
 # 4. 그 외 예외 상황을 위한 대처
 ## 4.1 redhat 6.2 재실행
 redhat 6.2를 재실행하고 싶은 경우가 있을텐데, 기본적으로 redhat 6.2 접속 시 `linux-up`을 입력해야 redhat 6.2가 켜집니다. 그래서 외부 원격접속한 상태에서 재실행했을 때 `linux-up`을 입력할 수 있는 방법이 없기 때문에, 자동으로 `linux-up`을 통해 redhat 6.2가 켜지도록 설정해야합니다. 
