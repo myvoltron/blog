@@ -1,6 +1,6 @@
 ---
 title: redhat 6.2 ssh install
-draft: "true"
+draft: "false"
 ---
 # Overview
 시스템 해킹을 배울 때 redhat 6.2를 사용하여 실습을 진행하는 경우가 많습니다. 그러나 일반적인 x86 CPU를 쓰는 윈도우 컴퓨터가 아니라 맥북을 쓸 땐 VMware나 redhat 6.2를 설치하기 어렵습니다.
